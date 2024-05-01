@@ -29,7 +29,7 @@ def main():
         with open(fn, "r", encoding='UTF-8') as f:
             ls = f.readlines()[1:]
             ls = itertools.takewhile(lambda x: x != "---\n", ls)
-            e = yaml.load("".join(ls), Loader=yaml.FullLoader)
+            e = yaml.load("".join(ls), Loader=yaml.SafeLoader)
             e['ID'] = fn.split("/")[1][0:-3]
             for i in ['title', 'booktitle']:
                 if i in e:
